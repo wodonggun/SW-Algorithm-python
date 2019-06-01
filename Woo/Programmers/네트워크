@@ -1,0 +1,25 @@
+answer = 0
+visit = [0 for i in range(201)]     # 해당 노드 방문 여부 체크
+
+def sol(cur,n,computers):
+    global visit
+    
+    
+    # 현재 노드(cur)에서 이동가능한 노드 확인
+    for i in range(0,n):
+        if visit[i]==0 and computers[cur][i]==1:      # 방문한적 없고, 이동가능한 노드이면 
+            visit[i] = 1
+            sol(i,n,computers)                        # dfs
+
+def solution(n, computers):
+    global answer
+    global visit
+
+    for i in range(0,n):
+        if visit[i]==0:   # 방문한적 없으면 dfs 실행
+            visit[i]=1    # 방문 체크
+            answer+=1     # dfs 시작 = 네트워크 집단 
+            sol(i,n,computers)  # dfs start
+
+
+    return answer
