@@ -1,0 +1,41 @@
+
+
+def solution(progresses, speeds):
+    answer = []
+    tmp = []
+    life = 0
+    
+    # 구조체 느낌으로 리스트에 저장
+    for i in range (0,len(progresses)):
+        tmp.append([progresses[i],speeds[i]])
+
+    while(len(tmp)!=0):
+        # 프로그램 진행
+        for i in range (0,len(tmp)):
+            tmp[i][0]+=tmp[i][1]
+        
+
+        count = 0
+
+        # 끝난 모듈 체크
+        for i in range (0,len(tmp)):      
+            if (tmp[0][0] >=100):     # 모듈 개발 100%가 되면 
+                count+=1              # 모듈 개발 끝난거 카운팅
+                del tmp[0]            # 큐 pop
+            else:
+                break
+                
+        # 모듈 끝난게 있으면 
+        if(count!=0):
+            answer.append(count) 
+            
+               
+        # life++     
+        life+=1
+    
+  
+      
+    return answer
+
+
+print(solution([93,30,55],[1,30,5]))
