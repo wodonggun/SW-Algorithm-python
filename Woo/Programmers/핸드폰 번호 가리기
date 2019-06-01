@@ -1,0 +1,13 @@
+def solution(phone_number):
+    answer = ''
+
+    # 0 ~ n-4 까지 '*'처리
+    for i in range(0,len(phone_number)-4):
+        answer+="*"    
+    # 나머지 번호 입력    
+    answer+=phone_number[len(phone_number)-4:]
+    
+
+    return answer
+
+print(solution("01033334444"))
